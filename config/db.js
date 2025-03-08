@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize";
 
 // Conectar a la base de datos
 const db = new Sequelize('agenciaviajes', 'root', 'admin', {
-    host: '127.0.0.1',
+    host: 'localhost',
     port: 3306,
     dialect: 'mysql',
     define: {
