@@ -17,12 +17,26 @@ const paginaViajes = async (req, res) => {
     // Consultar bases de datos
     const viajes = await Viaje.findAll({ raw: true });
 
-    console.log(viajes);
-
     res.render('viajes', {
         pagina: 'Proximos Viajes',
         viajes
     });
+}
+
+// Muestra un viaje por su slug
+const paginaDetalleViaje = async (req, res) => {
+    const {slug} = req.params
+
+    try {   
+        const viaje = await Viaje.findOne({where: {slug}});
+
+        res.render('detalleViaje', {
+            pagina: 'Informacion Viaje',
+            viaje
+        })
+    } catch(error) {
+        console.log(error);
+    }
 }
 
 const paginaTestimoniales = (req, res) => { 
@@ -35,5 +49,6 @@ export {
     paginaInicio,
     paginaNosotros,
     paginaViajes,
+    paginaDetalleViaje,
     paginaTestimoniales
 }
