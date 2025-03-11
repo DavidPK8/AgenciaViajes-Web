@@ -1,10 +1,10 @@
 import { Sequelize } from "sequelize";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // Conectar a la base de datos
-const db = new Sequelize('agenciaviajes', 'root', 'admin', {
-    host: 'localhost',
-    port: 3306,
-    dialect: 'mysql',
+const db = new Sequelize(process.env.DB_URL, {
     define: {
         timestamps: false
     },
